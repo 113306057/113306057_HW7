@@ -1,0 +1,137 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+
+.main-container {
+  max-width: 900px;
+  margin: 50px auto;
+  display: flex;
+  gap: 30px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.left-panel, .right-panel {
+  height: 1150px;
+  display: flex;
+  flex-direction: column;
+}
+
+.left-panel {
+  width: 330px;
+  background-color: #d9b3b3;
+}
+.right-panel h2,
+.left-panel h2{
+  border-bottom: 2px solid #ccc;
+}
+
+.photo-panel {
+  height: 200px;
+  background-image: url('https://github.com/113306057/113306057_LAB1/raw/main/image1.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+}
+
+.text-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.text-content h2 {
+  margin-bottom: 10px;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 5px;
+}
+
+.nccu-icon {
+  width: 50px;
+  align-self: center;
+}
+
+.right-panel {
+  width: 540px;
+}
+
+.right-panel section {
+  margin-bottom: 30px;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.timeline-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.homework-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.homework-list a {
+  text-decoration: none;
+  color: #007bff;
+  transition: color 0.3s ease;
+}
+
+.homework-list a:hover {
+  color: #0056b3;
+}
+
+.favorite-music .music-covers {
+  display: flex;
+  gap:8px;
+  justify-content: space-between;
+}
+
+.favorite-music .music-covers img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+.favorite-music p{
+  font-size: 16px;
+}
+.favorite-music .music-covers img:hover {
+  transform: scale(1.1);
+}
+
+.note {
+  font-size: 0.85em;
+  color: #666;
+  text-align: center;
+  margin-top: 10px;
+}
+
+#music-list {
+  list-style: none;
+  padding: 0;
+}
+
+#music-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+#music-list img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
