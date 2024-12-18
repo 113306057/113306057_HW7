@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HW7</title>
+  <link rel="stylesheet" href="113306057_HW7.css">
+</head>
+
+<body>
+  <div class="main-container">
+    <!-- 左側面板 -->
+    <div class="left-panel">
+      <div class="photo-panel"></div>
+      <div class="text-content">
+        <section class="edit-container">
+          <h1 id="display-name">JEREMY</h1>
+          <button id="edit-button">edit</button>
+        </section>
+        <h2>About Me</h2>
+        <p>Hello! I'm a student at NCCU studying MIS.</p>
+        <section class="contact-info">
+          <h2>Contact Info</h2>
+          <a href="mailto:113306057@nccu.edu.tw">113306057@nccu.edu.tw</a><br>
+        </section>
+        <img src="https://github.com/113306057/113306057_HW4/raw/main/政大logo.jpg" alt="wrong">
+      </div>
+    </div>
+
+    <!-- 右側面板 -->
+    <div class="right-panel">
+      <!-- 教育 -->
+      <section class="education">
+        <h2>Education</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <span class="year">2020-2023</span>
+            <span class="description">Started at TNGS</span>
+          </div>
+          <div class="timeline-item">
+            <span class="year">2023-2024</span>
+            <span class="description">Joined CCUBA</span>
+          </div>
+          <div class="timeline-item">
+            <span class="year">2024-now</span>
+            <span class="description">Joined NCCU MIS Department</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 作業清單 -->
+      <section class="homework-list">
+        <h2>Homework List</h2>
+        <ul>
+          <li><a href="https://github.com/113306057/HW2.git">HW1: https://github.com/113306057/HW2.git</a></li>
+          <li><a href="https://github.com/113306057/HW2.git">HW2: https://github.com/113306057/HW2.git</a></li>
+          <li><a href="https://github.com/113306057/HW3.git">HW3: https://github.com/113306057/HW3.git</a></li>
+          <li><a href="https://github.com/113306057/113306057_HW4.git">HW4: https://github.com/113306057/113306057_HW4.git</a></li>
+          <li><a href="https://github.com/113306057/113306057_LAB1.git">Lab_1108: https://github.com/113306057/113306057_LAB1.git</a></li>
+        </ul>
+      </section>
+
+      <!-- 最愛音樂 -->
+      <section class="favorite-music">
+        <h2>Favorite Music</h2>
+        <div class="music-covers">
+            <a href = "https://www.youtube.com/watch?v=b_7Tvq6lQfM">
+                <img src="https://github.com/113306057/113306057_HW4/raw/main/ytlogo.png" alt= "wrong" width = "70" height = "70"></a>
+            <a href = "https://www.youtube.com/watch?v=KpcG2uah25U">
+                <img src="https://github.com/113306057/113306057_HW4/raw/main/ytlogo.png" alt= "wrong" width = "70" height = "70"></a>
+            <a href = "https://www.youtube.com/watch?v=lSD_L-xic9o">
+                <img src="https://github.com/113306057/113306057_HW4/raw/main/ytlogo.png" alt= "wrong" width = "70" height = "70"></a>
+            <a href = "https://www.youtube.com/watch?v=_KIIxj5bL_w">
+                <img src="https://github.com/113306057/113306057_HW4/raw/main/ytlogo.png" alt= "wrong" width = "70" height = "70"></a>
+        </div>      
+        <div class="music-covers">  
+            <p>Isn't She Lovely</p>
+            <p>water comes out of my eyes</p>
+            <p>From The Start</p>
+            <p>What if I</p>
+        </div>
+        <button id="add-music-button">add</button>
+        <form id="add-music-form" class="add-music-form" style="display: none;">
+          <input type="text" id="music-name" placeholder="Music Name" required />
+          <input type="url" id="music-link" placeholder="Music Link" required />
+          <button type="button" id="submit-music">Submit</button>
+        </form>
+        <p class="note">These songs are my go-to tracks when I need a mood boost!</p>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    // 可編輯名稱功能
+    const editButton = document.getElementById("edit-button");
+    const displayName = document.getElementById("display-name");
+    let nameInput, saveButton;
+
+    editButton.addEventListener("click", () => {
+      if (editButton.textContent === "edit") {
+        nameInput = document.createElement("input");
+        nameInput.type = "text";
+        nameInput.id = "name-input";
+        nameInput.value = displayName.textContent;
+        displayName.parentNode.insertBefore(nameInput, displayName.nextSibling);
+
+        saveButton = document.createElement("button");
+        saveButton.id = "save-button";
+        saveButton.textContent = "save";
+        nameInput.parentNode.insertBefore(saveButton, nameInput.nextSibling);
+
+        displayName.style.display = "none";
+        editButton.style.display = "none";
+
+        saveButton.addEventListener("click", () => {
+          displayName.textContent = nameInput.value;
+          displayName.style.display = "block";
+          nameInput.remove();
+          saveButton.remove();
+          editButton.style.display = "inline-block";
+        });
+      }
+    });
+
+    // 新增音樂清單功能
+    const addMusicButton = document.getElementById("add-music-button");
+    const addMusicForm = document.getElementById("add-music-form");
+    const musicList = document.getElementById("music-list");
+    const submitMusicButton = document.getElementById("submit-music");
+
+    addMusicButton.addEventListener("click", () => {
+      addMusicForm.style.display = addMusicForm.style.display === "none" ? "block" : "none";
+    });
+    
+    submitMusicButton.addEventListener("click", () => {
+      const musicName = document.getElementById("music-name").value;
+      const musicLink = document.getElementById("music-link").value;
+
+       // 檢查輸入欄位是否皆已填寫
+      if (!musicName || !musicLink) {
+        alert("請填寫完整的音樂名稱和連結！");
+        return;
+      }
+
+      // 創建新項目元素
+      const listItem = document.createElement("li");
+
+      // 1. 音樂超連結 (新視窗打開)
+      const musicAnchor = document.createElement("a");
+      musicAnchor.href = musicLink;
+      musicAnchor.textContent = musicName;
+      musicAnchor.target = "_blank";
+
+      // 2. 代表圖像
+      const musicImage = document.createElement("img");
+      musicImage.src = "https://github.com/113306057/113306057_HW4/raw/main/ytlogo.png";
+      musicImage.alt = "音樂封面";
+      musicImage.style.width = "50px";
+      musicImage.style.marginRight = "10px";
+
+      // 3. 音樂名稱描述文字
+      const musicDescription = document.createElement("span");
+      musicDescription.textContent = ` ${musicName}`;
+
+      // 組合元素並加入清單
+      listItem.appendChild(musicImage);
+      listItem.appendChild(musicAnchor);
+      musicList.appendChild(listItem);
+
+      // 清空表單並隱藏
+      document.getElementById("music-name").value = "";
+      document.getElementById("music-link").value = "";
+      addMusicForm.style.display = "none";
+    });
+    /*
+          if (musicName && musicLink) {
+            const newMusicItem = document.createElement("li");
+            const newMusicLink = document.createElement("a");
+            newMusicLink.href = musicLink;
+            newMusicLink.textContent = musicName;
+            newMusicLink.target = "_blank";
+
+            newMusicItem.appendChild(newMusicLink);
+            musicList.appendChild(newMusicItem);
+
+            document.getElementById("music-name").value = "";
+            document.getElementById("music-link").value = "";
+            addMusicForm.style.display = "none";
+          }
+        });
+
+*/
+  </script>
+</body>
+</html>
